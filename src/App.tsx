@@ -1,14 +1,11 @@
 import React from 'react';
+import A from './compontents/autoFocusInput'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          老婆爱你~~~
-        </p>
-      </header>
+      <A/>
     </div>
   );
 }
