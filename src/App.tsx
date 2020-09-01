@@ -1,12 +1,11 @@
 import React from 'react';
-import A from './compontents/autoFocusInput'
-import './App.css';
+import AutoFocusInput from './compontents/autoFocusInput'
 
 function App() {
   return (
-    <div className="App">
-      <A/>
-    </div>
+    <React.Fragment>
+      <AutoFocusInput/>    
+    </React.Fragment>
   );
 }
 

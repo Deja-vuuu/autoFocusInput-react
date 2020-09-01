@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import './style.scss'
 
-interface State {
+interface IState {
     focus: boolean,
     captcha: string
 }
-export default class AutoFocusInput extends Component<any, State> {
-    state = {
+interface DetailedHTMLProps{
+    HTMLInputElement:any
+}
+export default class AutoFocusInput extends Component<any, IState> {
+    readonly state = {
         focus: false,
         captcha: ''
     }
-    onChangeCaptcha = (e) => {
-        let inputValue = e.detail.value.slice(0, 4)
+    onChangeCaptcha = (e: React.ChangeEvent<HTMLInputElement>) => {
+        let inputValue = e.target.value.slice(0, 4);
         this.setState({
             captcha: inputValue
         }, () => {
@@ -21,11 +24,11 @@ export default class AutoFocusInput extends Component<any, State> {
         });
     }
     encryMobile = () => {
+        console.log();
 
     }
     render() {
         let { captcha, focus } = this.state;
-        console.log(focus)
         return <div className='sendCaptcha-page'>
             <div className='sendCaptcha-title'>
                 验证码
@@ -42,9 +45,9 @@ export default class AutoFocusInput extends Component<any, State> {
             }}
             >
                 <input className='sendCaptcha-input' type='number'
-                //  maxLength='4'
-                //   onfocus={focus} 
-                  onChange={this.onChangeCaptcha} />
+                    maxLength={4}
+                    autoFocus={focus} 
+                    onChange={this.onChangeCaptcha} />
                 {
                     [0, 1, 2, 3].map((value, index) => {
                         return <div className={index === captcha.length ? 'sendCaptcha-input-box sendCaptcha-input-box-at' : 'sendCaptcha-input-box'} key={index}>
